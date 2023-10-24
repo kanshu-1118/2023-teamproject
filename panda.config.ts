@@ -12,11 +12,21 @@ export default defineConfig({
 
     // Useful for theme customization
     theme: {
-      extend: {}
+      extend: {
+        tokens: {
+          colors: {
+            main : {value : "#6D92BF"},
+            accent : {value : "#FCFA68"},
+            base : {value : "#FAFCFF"},
+            fontColor : {value : "#100F0F"},
+          }
+        }
+      }
     },
 
     // The output directory for your css system
     outdir: "styled-system",
-    
+
+    jsxFramework: 'react',
     
 })
