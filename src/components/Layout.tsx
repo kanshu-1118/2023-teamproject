@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { center, flex } from "../../styled-system/patterns";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export const appName = "Sample App"
 
@@ -37,11 +38,11 @@ function Layout({children} : any , props: propsType ) {
     },[])
     
     return (
-        <div className={css({padding:"48px 0 100px"})}>
+        <div className={css({padding:"48px 0 100px", overflow:"hidden"})}>
             <Head>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <header className={center({position:"fixed",top:"0",width:"100vw", bgColor:"main",padding:"10px 0"})}>
+            <header className={center({position:"fixed",zIndex:"2",top:"0",width:"100vw", bgColor:"main",padding:"10px 0"})}>
                 <p className={css({fontSize:"20px",fontWeight:"bold",color:"base"})}>
                     {/* {Cの条件 ? (Bの条件 ? (Aの条件 ? (<p>A</p>):(<p>B</p>)) :(<p>C</p>)) :(<p>D</p>)} */}
                     {/* {true ? (true ? (false ? (false ? ("A"):("B")):("C")) :("D")) :("エラー")} */}
@@ -55,14 +56,19 @@ function Layout({children} : any , props: propsType ) {
                         }else if (pathStatus == "mypage") {
                             return "マイページ"
                         }else {
-                            return "存在しないページ"
+                            return "　　　　"
                         }
                     })()}
                 </p>
             </header>
-            <main>
+            <motion.main
+                initial={{ opacity: 0 , transform:"translateX(0)" }} //初期状態
+                animate={{ opacity: 1 , transform:"translateX(0)"}} //マウント
+                exit={{ opacity: 0 , transform:"translateX(0)"}} //アンマウント
+            >
+                
                 { children }
-            </main>
+            </motion.main>
             <footer className={css({position:"fixed",bottom:"0",width:"100vw", bgColor:"main",})}>
                 <Flex >
                     {navArray.map((e:any,i:number) => {
