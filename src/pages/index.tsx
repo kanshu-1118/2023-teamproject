@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { css } from "../../styled-system/css";
 import { Box, Center, Flex } from "../../styled-system/jsx";
-import Layout from "./components/Layout";
+import Layout from "../components/Layout";
 import {faArrowRightArrowLeft, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { center } from "../../styled-system/patterns";

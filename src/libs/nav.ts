@@ -1,5 +1,5 @@
 import { faHouse,faPenSquare,faClock,faUser } from "@fortawesome/free-solid-svg-icons";
-import { navType } from "../types/navType";
+import { navType } from "../pages/types/navType";
 
 const navArray : navType = [
     {   

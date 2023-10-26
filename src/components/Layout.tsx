@@ -1,12 +1,13 @@
 import Head from "next/head";
-import { css } from "../../../styled-system/css";
+import { css } from "../../styled-system/css";
 // import { color } from "../theme/colorTheme";
 import { navArray } from "../libs/nav";
-import { Box, Center, Flex } from "../../../styled-system/jsx";
+import { Box, Center, Flex } from "../../styled-system/jsx";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { center, flex } from "../../../styled-system/patterns";
+import { center, flex } from "../../styled-system/patterns";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export const appName = "Sample App"
 
@@ -67,17 +68,21 @@ function Layout({children} : any , props: propsType ) {
                     {navArray.map((e:any,i:number) => {
                         if (e.id == pathStatus) {
                             return(
-                                <Center padding={"14px 0 20px"} gap={"8px"} key={i} flexDir={"column"} w={"calc(100vw/4)"} >
-                                    <FontAwesomeIcon icon={e.image} className={css({color:"accent",height:"20px"})} />
-                                    <p className={css({fontSize:"10px", fontWeight:"bold", color:"base"})}>{e.name}</p>
-                                </Center>
+                                <Link href={e.link} key={i}>
+                                    <Center padding={"14px 0 20px"} gap={"8px"} flexDir={"column"} w={"calc(100vw/4)"} >
+                                        <FontAwesomeIcon icon={e.image} className={css({color:"accent",height:"20px"})} />
+                                        <p className={css({fontSize:"10px", fontWeight:"bold", color:"base"})}>{e.name}</p>
+                                    </Center>
+                                </Link>
                             )
                         }else {
                             return(
-                                <Center padding={"14px 0 20px"} gap={"8px"} key={i} flexDir={"column"} w={"calc(100vw/4)"} >
-                                    <FontAwesomeIcon icon={e.image} className={css({color:"base",height:"20px"})} />
-                                    <p className={css({fontSize:"10px", fontWeight:"bold", color:"base"})}>{e.name}</p>
-                                </Center>
+                                <Link href={e.link} key={i}>
+                                    <Center padding={"14px 0 20px"} gap={"8px"} flexDir={"column"} w={"calc(100vw/4)"} >
+                                        <FontAwesomeIcon icon={e.image} className={css({color:"base",height:"20px"})} />
+                                        <p className={css({fontSize:"10px", fontWeight:"bold", color:"base"})}>{e.name}</p>
+                                    </Center>
+                                </Link>
                             )
                         }
                     })}
