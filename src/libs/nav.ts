@@ -23,7 +23,7 @@ const navArray : navType = [
     {
         id:"mypage",
         name: "マイページ",
-        link : "/link",
+        link : "/mypage",
         image: faUser,
     },
 ]
