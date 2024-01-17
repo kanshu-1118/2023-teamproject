@@ -38,14 +38,15 @@ function Layout({children} : any , props: propsType ) {
     },[])
     
     return (
-        <div className={css({padding:"48px 0 100px", overflow:"hidden"})}>
+        <div className={css({overflow:"hidden",w:"100vw",bgColor:"base"})}>
             <Head>
+                <meta name="apple-mobile-web-app-capable" content="yes"></meta>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <header className={center({position:"fixed",zIndex:"2",top:"0",width:"100vw", bgColor:"main",padding:"10px 0"})}>
+            {/* <header className={center({position:"fixed",zIndex:"2",top:"0",width:"100vw", bgColor:"main",padding:"10px 0"})}>
                 <p className={css({fontSize:"20px",fontWeight:"bold",color:"base"})}>
-                    {/* {Cの条件 ? (Bの条件 ? (Aの条件 ? (<p>A</p>):(<p>B</p>)) :(<p>C</p>)) :(<p>D</p>)} */}
-                    {/* {true ? (true ? (false ? (false ? ("A"):("B")):("C")) :("D")) :("エラー")} */}
+                    {Cの条件 ? (Bの条件 ? (Aの条件 ? (<p>A</p>):(<p>B</p>)) :(<p>C</p>)) :(<p>D</p>)}
+                    {true ? (true ? (false ? (false ? ("A"):("B")):("C")) :("D")) :("エラー")}
                     {(() : any => {
                         if (pathStatus == "home") {
                             return "ホーム"
@@ -60,16 +61,17 @@ function Layout({children} : any , props: propsType ) {
                         }
                     })()}
                 </p>
-            </header>
+            </header> */}
             <motion.main
-                initial={{ opacity: 0 , transform:"translateX(0)" }} //初期状態
-                animate={{ opacity: 1 , transform:"translateX(0)"}} //マウント
-                exit={{ opacity: 0 , transform:"translateX(0)"}} //アンマウント
+                initial={{ opacity: 0 }} //初期状態
+                animate={{ opacity: 1 }} //マウント
+                exit={{ opacity: 0 }} //アンマウント
+                className={css({position:"relative",bgColor:"base"})}
             >
                 
                 { children }
             </motion.main>
-            <footer className={css({position:"fixed",bottom:"0",width:"100vw", bgColor:"main",})}>
+            {/* <footer className={css({position:"fixed",bottom:"0",width:"100vw", bgColor:"main",})}>
                 <Flex >
                     {navArray.map((e:any,i:number) => {
                         if (e.id == pathStatus) {
@@ -93,7 +95,7 @@ function Layout({children} : any , props: propsType ) {
                         }
                     })}
                 </Flex>
-            </footer>
+            </footer> */}
         </div>
     );
 }

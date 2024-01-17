@@ -14,10 +14,16 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@tarekraafat/autocomplete.js": "^10.2.7",
+    "axios": "^1.6.2",
+    "firebase": "^10.7.1",
+    "firebase-admin": "^12.0.0",
     "framer-motion": "^10.16.4",
     "next": "13.5.6",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-firebase-hooks": "^5.1.1",
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
     "@pandacss/dev": "^0.16.0",
