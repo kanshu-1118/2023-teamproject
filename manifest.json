@@ -1,0 +1,7 @@
+{  
+    "name": "サンプルアプリ",  
+    "short_name": "サンプル",  
+    "display": "standalone",  
+    "scope": "/",  
+    "start_url": "/"  
+}

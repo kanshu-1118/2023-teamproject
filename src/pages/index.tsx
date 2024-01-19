@@ -58,15 +58,18 @@ export default function Home() {
   
 
   return (
-    <div>
+    <div className={css({h:"100vh"})}>
       <Layout>
-        <Flex className={css({bgColor:"main"})} padding={"40px 0 0"} flexDir={"column"} gap={"32px"} >
-          <Center flexDir={"column"} padding={"16px 0px"} gap={"24px"} bgColor={"main"}>
-            <Flex alignItems={"center"} gap={"16px"} w={"287px"}>
+        <Flex  padding={"40px 0 0"} flexDir={"column"} gap={"32px"} >
+          <Center flexDir={"column"} padding={"16px 0px"} gap={"24px"}>
+            <div className={css({position:"absolute",w:"100vw",h:"50%",bg:"linear-gradient(#FAFCFF,#63A6F7,#FAFCFF)",zIndex:"0"})}>
+
+            </div>
+            <Flex  zIndex={"1"} alignItems={"center"} gap={"16px"} w={"287px"}>
               <div className={css({w:"44px",h:"44px",border:"2px solid #000",borderColor:"base",bgColor:"green.300",borderRadius:"100%"})} />
               <p className={css({fontWeight:"bold",color:"base"})}>{userData?.name}さん</p>
             </Flex>
-            <Flex flexDir={"column"} padding={"18px 0px"} w={"287px"} h={"155px"} gap={"12px"} bgImage={"url(/images/topCard.svg)"}>
+            <Flex zIndex={"1"} flexDir={"column"} padding={"18px 0px"} w={"287px"} h={"155px"} gap={"12px"} bgImage={"url(/images/topCard.svg)"}>
               <Flex flexDir={"column"} gap={"10px"}>
                 <Flex alignItems={"center"} padding={"0px 24px"} justifyContent={"space-between"}>
                   <Flex borderRadius={"3px"}><p className={center({fontSize:"18px",width:"90px",fontWeight:"bold",h:"51px"})}>{userData?.myRoot.goStation}</p></Flex>
@@ -92,11 +95,11 @@ export default function Home() {
                 </Center>
               </Flex>
             </Flex>
-            <Center>
+            <Center zIndex={"1"}>
               <Button text="ルート変更" onClick={() => {setShow(true)}}/>
             </Center>
           </Center>
-          <div className={flex({flexDir:"column",bgColor:"base", gap:"48px",padding:"40px 0",borderRadius:"30px 30px 0 0", boxShadow:"0px -2px 4px 0px rgba(0, 0, 0, 0.25)"})}>
+          <div className={flex({zIndex:"0",flexDir:"column",bgColor:"base", gap:"48px",padding:"40px 0",borderRadius:"30px 30px 0 0", boxShadow:"0px -2px 4px 0px rgba(0, 0, 0, 0.25)"})}>
             <Center flexDir={"column"} gap={"32px"}>
               <h3 className={css({fontSize:"19px", fontWeight:"bold"})}>マイルートしすう</h3>
               <Flex flexDir={"column"} gap={"20px"}>
@@ -152,7 +155,7 @@ export default function Home() {
       <RootModal show={show} setShow={setShow} />
       <SmellModal show={smellShow} setShow={setSmellShow} smell1={userData?.butSmell.butsmell1} smell2={userData?.butSmell.butsmell2} smell3={userData?.butSmell.butsmell3} />
       <Link href={"/post"}>
-        <button className={css({position:"fixed",zIndex:"0",borderRadius:"100px",fontWeight:"bold",top:"760px",right:"24px", bgColor:"main",fontSize:"16px",padding:"16px 48px",color:"base"})}>つぶやき</button>
+        <button className={css({position:"fixed",zIndex:"0",borderRadius:"100px",fontWeight:"bold",bottom:"48px",right:"24px", bgColor:"main",fontSize:"16px",padding:"16px 48px",color:"base"})}>つぶやき</button>
       </Link>
     </div>
   )

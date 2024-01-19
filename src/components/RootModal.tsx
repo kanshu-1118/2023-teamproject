@@ -17,6 +17,7 @@ const RootModal = ({show,setShow} : any) => {
     const [train,setTrain] = useState()
     const [offset,setOffset] = useState("1")
     const [count,setCount] = useState(0)
+    const [btnFocus,setBtnFocus] = useState(true)
     
     // inputに入れる値
     const [text, setText] = React.useState("");
@@ -52,6 +53,7 @@ const RootModal = ({show,setShow} : any) => {
         //     // setOffset(`${i}`)
         //     setCount(count + 1)
         // }
+        
     },[offset])
     // console.log(train);
     
@@ -62,8 +64,8 @@ const RootModal = ({show,setShow} : any) => {
             await updateDoc(doc(db, "users", user.uid), {
                 userUniqueID: user.uid,
                 myRoot:{
-                    goStation:gostation,
-                    comeStation:comestation,
+                    goStation:text,
+                    comeStation:text2,
                 },
             });
         }
@@ -237,8 +239,11 @@ const RootModal = ({show,setShow} : any) => {
                                     borderRadius:"10px",
                                     fontSize:"12px",
                                     fontWeight:"bold",
-                                    bgColor:"gray",
+                                    color:btnFocus ? "base" : "black",
+                                    bgColor:btnFocus ? "main" : "gray",
+                                    transition:"0.2s ease",
                                 })}
+                                onClick={() => {setBtnFocus(true)}}
                                 >出発時間</button>
                                 <button className={center({
                                     w:"88px",
@@ -247,9 +252,11 @@ const RootModal = ({show,setShow} : any) => {
                                     borderRadius:"10px",
                                     fontSize:"12px",
                                     fontWeight:"bold",
-                                    color:"base",
-                                    bgColor:"main",
+                                    color:btnFocus ? "black" : "base",
+                                    bgColor:btnFocus ? "gray" : "main",
+                                    transition:"0.2s ease",
                                 })}
+                                onClick={() => {setBtnFocus(false)}}
                                 >到着時間</button>
                             </div>
                             <div className={center({
@@ -280,6 +287,8 @@ const RootModal = ({show,setShow} : any) => {
                                 FireStoreSet()
                                 router.push("/");
                                 setIsLoading(false);
+                                setShow(false)
+                                router.reload()
                             }}
                             disabled={isLoading}
                             >決定</button>

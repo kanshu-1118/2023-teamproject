@@ -37,10 +37,10 @@ const SmellModal = ({show,setShow,smell1,smell2,smell3} : any) => {
                         <p className={css({fontSize:"20px",fontWeight:"bold"})}>ひじょうによわい</p>
                         <div className={flex({gap:"8px"})}>
                             <div className={css({bgImage:"url(/images/myRoot1.svg)",w:"41px",h:"37px"})}></div>
-                            <div className={css({bgImage:"url(/images/myRoot2.svg)",w:"41px",h:"37px"})}></div>
-                            <div className={css({bgImage:"url(/images/myRoot3.svg)",w:"41px",h:"37px"})}></div>
-                            <div className={css({bgImage:"url(/images/myRoot4.svg)",w:"41px",h:"37px"})}></div>
-                            <div className={css({bgImage:"url(/images/myRoot5.svg)",w:"41px",h:"37px"})}></div>
+                            <div className={css({bgImage:"url(/images/myRoot0.svg)",w:"41px",h:"37px"})}></div>
+                            <div className={css({bgImage:"url(/images/myRoot0.svg)",w:"41px",h:"37px"})}></div>
+                            <div className={css({bgImage:"url(/images/myRoot0.svg)",w:"41px",h:"37px"})}></div>
+                            <div className={css({bgImage:"url(/images/myRoot0.svg)",w:"41px",h:"37px"})}></div>
                         </div>
                         <p className={css({fontSize:"10px"})}>(ほとんど感じないが匂いに敏感な人は分かる匂い)</p>
                         <div className={css({

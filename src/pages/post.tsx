@@ -15,6 +15,8 @@ import { auth} from "@/libs/firebase/index";  //パスは必要に応じて調�
 import { doc, setDoc, getDoc, addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "@/libs/firebase/config";
 import { useRouter } from "next/navigation"; 
+import { getDatabase, onChildAdded, ref } from "firebase/database";
+import { FirebaseError } from "firebase/app";
 
 export default function Home() {
 
@@ -32,7 +34,64 @@ export default function Home() {
     const [querySnapshots,setQuerySnapshots] : any = useState([])
     const [postData,setPostData] : any = useState()
     const router = useRouter();
+    const [array,setArray] = useState(new Array())
 
+    // const FireGet = () => {
+    //     auth.onAuthStateChanged(async (user:any) => {
+    //         // const postDoc = await getDocs(collection(db, "post"));
+    //         const querySnapshot = await getDocs(collection(db, "post",station,"posts"));
+    //         querySnapshot.docs.map((doc : any,index : number,a:any) => {
+    //             // doc.data() is never undefined for query doc snapshots
+    //             setQuerySnapshots([...querySnapshots, doc.data()])
+    //             console.log(doc.id, " => ", doc.data());
+    //             console.log(querySnapshots);
+    //             // if (doc.data().message == "") {
+    //             //     return(
+    //             //         <div key={index} className={flex({gap:"16px",alignItems:"center",padding:"8px",flexDir:"column",flexShrink:"0",bgImage:"url(/images/lookImgSmall.svg)",bgRepeat:"no-repeat",bgPosition:"center",w:"292px",h:"116px"})} >
+    //             //             <div className={center({w:"100%",justifyContent:"space-between"})}>
+    //             //                 <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",transform:"rotate(270deg)",borderBottom:"1px solid #000"})}>7:10</p>
+    //             //                 <div>
+    //             //                     <div className={center({})}>
+    //             //                         <p className={css({fontSize:"18px"})}>{doc.data().butsmell}</p>
+    //             //                         <span>・</span>
+    //             //                         <p className={css({fontSize:"18px"})}>{doc.data().level}</p>
+    //             //                     </div>
+    //             //                     <p className={css({fontSize:"24px",fontWeight:"bold",textAlign:"center"})}>{doc.data().station}</p>
+    //             //                 </div>
+    //             //                 <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",borderTop:"1px solid #000",transform:"rotate(270deg)"})}>{doc.data().vehicle}</p>
+    //             //             </div>
+    //             //             <Box borderTop={"1px dashed #000"} alignItems={"center"} justifyContent={"space-between"} w={"239px"}h={"1px"}></Box>
+    //             //         </div>
+    //             //     )
+    //             // } else {
+    //             //     return(
+    //             //         <div key={index} className={flex({gap:"16px",alignItems:"center",padding:"8px",flexDir:"column",flexShrink:"0",bgImage:"url(/images/lookImgBig.svg)",bgRepeat:"no-repeat",bgPosition:"center",w:"292px",h:"162px"})} >
+    //             //             <div className={center({w:"100%",justifyContent:"space-between"})}>
+    //             //                 <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",transform:"rotate(270deg)",borderBottom:"1px solid #000"})}>7:10</p>
+    //             //                 <div>
+    //             //                     <div className={center({})}>
+    //             //                         <p className={css({fontSize:"18px"})}>{doc.data().butsmell}</p>
+    //             //                         <span>・</span>
+    //             //                         <p className={css({fontSize:"18px"})}>{doc.data().level}</p>
+    //             //                     </div>
+    //             //                     <p className={css({fontSize:"24px",fontWeight:"bold",textAlign:"center"})}>{doc.data().station}</p>
+    //             //                 </div>
+    //             //                 <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",borderTop:"1px solid #000",transform:"rotate(270deg)"})}>{doc.data().vehicle}</p>
+    //             //             </div>
+    //             //             <Box borderTop={"1px dashed #000"} alignItems={"center"} justifyContent={"space-between"} w={"239px"}h={"1px"}></Box>
+    //             //             <div>
+    //             //                 <p className={css({w:"210px",h:"42px",fontWeight:"bold"})}>
+    //             //                     {doc.data().message}
+    //             //                 </p>
+    //             //             </div>
+    //             //         </div>
+    //             //     )
+    //             // }
+    //         });
+    //     })
+    // }
+
+    const ent : any = []
 
 
     useEffect(() => {
@@ -41,18 +100,68 @@ export default function Home() {
         } else if (obs == "post") {
             setOpacity(1)
         }
+        // FireGet()
         auth.onAuthStateChanged(async (user:any) => {
             // const postDoc = await getDocs(collection(db, "post"));
             const querySnapshot = await getDocs(collection(db, "post",station,"posts"));
             querySnapshot.docs.map((doc : any,index : number,a:any) => {
                 // doc.data() is never undefined for query doc snapshots
-                setQuerySnapshots([...querySnapshots, doc.data()])
+                // setQuerySnapshots([...querySnapshots, doc.data()])
                 // console.log(doc.id, " => ", doc.data());
                 // console.log(querySnapshots);
+                // if (doc.data().message == "") {
+                //     return(
+                //         <div key={index} className={flex({gap:"16px",alignItems:"center",padding:"8px",flexDir:"column",flexShrink:"0",bgImage:"url(/images/lookImgSmall.svg)",bgRepeat:"no-repeat",bgPosition:"center",w:"292px",h:"116px"})} >
+                //             <div className={center({w:"100%",justifyContent:"space-between"})}>
+                //                 <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",transform:"rotate(270deg)",borderBottom:"1px solid #000"})}>7:10</p>
+                //                 <div>
+                //                     <div className={center({})}>
+                //                         <p className={css({fontSize:"18px"})}>{doc.data().butsmell}</p>
+                //                         <span>・</span>
+                //                         <p className={css({fontSize:"18px"})}>{doc.data().level}</p>
+                //                     </div>
+                //                     <p className={css({fontSize:"24px",fontWeight:"bold",textAlign:"center"})}>{doc.data().station}</p>
+                //                 </div>
+                //                 <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",borderTop:"1px solid #000",transform:"rotate(270deg)"})}>{doc.data().vehicle}</p>
+                //             </div>
+                //             <Box borderTop={"1px dashed #000"} alignItems={"center"} justifyContent={"space-between"} w={"239px"}h={"1px"}></Box>
+                //         </div>
+                //     )
+                // } else {
+                //     return(
+                //         <div key={index} className={flex({gap:"16px",alignItems:"center",padding:"8px",flexDir:"column",flexShrink:"0",bgImage:"url(/images/lookImgBig.svg)",bgRepeat:"no-repeat",bgPosition:"center",w:"292px",h:"162px"})} >
+                //             <div className={center({w:"100%",justifyContent:"space-between"})}>
+                //                 <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",transform:"rotate(270deg)",borderBottom:"1px solid #000"})}>7:10</p>
+                //                 <div>
+                //                     <div className={center({})}>
+                //                         <p className={css({fontSize:"18px"})}>{doc.data().butsmell}</p>
+                //                         <span>・</span>
+                //                         <p className={css({fontSize:"18px"})}>{doc.data().level}</p>
+                //                     </div>
+                //                     <p className={css({fontSize:"24px",fontWeight:"bold",textAlign:"center"})}>{doc.data().station}</p>
+                //                 </div>
+                //                 <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",borderTop:"1px solid #000",transform:"rotate(270deg)"})}>{doc.data().vehicle}</p>
+                //             </div>
+                //             <Box borderTop={"1px dashed #000"} alignItems={"center"} justifyContent={"space-between"} w={"239px"}h={"1px"}></Box>
+                //             <div>
+                //                 <p className={css({w:"210px",h:"42px",fontWeight:"bold"})}>
+                //                     {doc.data().message}
+                //                 </p>
+                //             </div>
+                //         </div>
+                //     )
+                // }
+                array.push(doc.data())
+                setArray(new Array(array))
+                console.log(array);
+                
             });
         })
-    },[])
-
+        
+    },[]) 
+    
+    console.log(array[0]);
+    
     const FireStoreSet = () => {
         auth.onAuthStateChanged(async () => {
             // ログイン済みのユーザー情報があるかをチェック
@@ -193,7 +302,7 @@ export default function Home() {
                             transition={{ duration: 0.2 }}
                             className={flex({ maxH:"460px",gap:"24px",overflowY:"scroll",'&::-webkit-scrollbar':{display:"none"},position:"absolute",top:"0",flexDir:"column"})}>
                             
-                            <div className={flex({gap:"16px",alignItems:"center",padding:"8px",flexDir:"column",flexShrink:"0",bgImage:"url(/images/lookImgBig.svg)",bgRepeat:"no-repeat",bgPosition:"center",w:"292px",h:"162px"})} >
+                            {/* <div className={flex({gap:"16px",alignItems:"center",padding:"8px",flexDir:"column",flexShrink:"0",bgImage:"url(/images/lookImgBig.svg)",bgRepeat:"no-repeat",bgPosition:"center",w:"292px",h:"162px"})} >
                                 <div className={center({w:"100%",justifyContent:"space-between"})}>
                                     <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",transform:"rotate(270deg)",borderBottom:"1px solid #000"})}>7:10</p>
                                     <div>
@@ -227,10 +336,10 @@ export default function Home() {
                                     <p className={css({fontSize:"18px",textAlign:"center",w:"60px",h:"25px",borderTop:"1px solid #000",transform:"rotate(270deg)"})}>3号車</p>
                                 </div>
                                 <Box borderTop={"1px dashed #000"} alignItems={"center"} justifyContent={"space-between"} w={"239px"}h={"1px"}></Box>
-                            </div>
+                            </div> */}
+                            <div>
                             {
-                                querySnapshots.map((e:any,i:any) => {
-                                    console.log(e);
+                                array[0].map((e:any,i:any) => {
                                     if (e.message == "") {
                                         return(
                                             <div key={i} className={flex({gap:"16px",alignItems:"center",padding:"8px",flexDir:"column",flexShrink:"0",bgImage:"url(/images/lookImgSmall.svg)",bgRepeat:"no-repeat",bgPosition:"center",w:"292px",h:"116px"})} >
@@ -276,6 +385,8 @@ export default function Home() {
                                     
                                 })
                             }
+                            </div>
+                                
                         </motion.div>
                     }
                 </div>
