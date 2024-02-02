@@ -267,6 +267,10 @@ export default function Home() {
                                             onChange={(e) => setButsmell(e.target.value)}
                                         >
                                             <option value="たばこ">たばこ</option>
+                                            <option value="にんにく">にんにく</option>
+                                            <option value="口臭">口臭</option>
+                                            <option value="体臭">体臭</option>
+                                            <option value="香水">香水</option>
                                         </select>
                                     </div>
                                     <div className={center({flexDir:"column",gap:"8px"})}>
