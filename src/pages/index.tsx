@@ -104,7 +104,7 @@ export default function Home() {
               <h3 className={css({fontSize:"19px", fontWeight:"bold"})}>マイルートしすう</h3>
               <Flex flexDir={"column"} gap={"20px"}>
                 <Center gap={"16px"}>
-                  <span className={css({fontSize:"12px",fontWeight:"bold"})}>強</span>
+                  <span className={css({fontSize:"12px",fontWeight:"bold"})}>弱</span>
                     {/* <Center width={"237px"} padding={"8px 0"} borderRadius={"36px"} background={"linear-gradient(to right, #FA4892, #63A6F7)"} boxShadow={"0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset"}><span className={css({fontSize:"14px",fontWeight:"bold",color:"base"})}>におい指数</span></Center> */}
                     <div className={flex({gap:"8px"})}>
                       <div className={css({bgImage:"url(/images/myRoot1.svg)",w:"41px",h:"37px"})}></div>
@@ -113,7 +113,7 @@ export default function Home() {
                       <div className={css({bgImage:"url(/images/myRoot4.svg)",w:"41px",h:"37px"})}></div>
                       <div className={css({bgImage:"url(/images/myroot5.svg)",w:"41px",h:"37px"})}></div>
                     </div>
-                  <span className={css({fontSize:"12px",fontWeight:"bold"})}>弱</span>
+                  <span className={css({fontSize:"12px",fontWeight:"bold"})}>強</span>
                 </Center>
                 <Flex flexDir={"column"}>
                     <Flex justifyContent={"flex-end"} w={"100vw"} overflowX={"scroll"}>
