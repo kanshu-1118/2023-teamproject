@@ -155,7 +155,7 @@ export default function Home() {
       <RootModal show={show} setShow={setShow} />
       <SmellModal show={smellShow} setShow={setSmellShow} smell1={userData?.butSmell.butsmell1} smell2={userData?.butSmell.butsmell2} smell3={userData?.butSmell.butsmell3} />
       <Link href={"/post"}>
-        <button className={css({position:"fixed",zIndex:"0",borderRadius:"100px",fontWeight:"bold",bottom:"48px",right:"24px", bgColor:"main",fontSize:"16px",padding:"16px 48px",color:"base"})}>つぶやき</button>
+        <button className={css({position:"fixed",zIndex:"0",borderRadius:"100px",fontWeight:"bold",bottom:"64px",right:"24px", bgColor:"main",fontSize:"16px",padding:"16px 48px",color:"base"})}>つぶやき</button>
       </Link>
     </div>
   )
