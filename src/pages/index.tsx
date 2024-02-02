@@ -60,7 +60,7 @@ export default function Home() {
   return (
     <div className={css({h:"100vh"})}>
       <Layout>
-        <Flex  padding={"40px 0 0"} flexDir={"column"} gap={"32px"} >
+        <Flex  padding={"40px 0 100px"} flexDir={"column"} gap={"32px"} >
           <Center flexDir={"column"} padding={"16px 0px"} gap={"24px"}>
             <div className={css({position:"absolute",w:"100vw",h:"50%",bg:"linear-gradient(#FAFCFF,#63A6F7,#FAFCFF)",zIndex:"0"})}>
 
@@ -127,12 +127,12 @@ export default function Home() {
                       </Flex>
                     </Flex>
                     <Image src="./images/load.svg" width={"1000"} height={"1000"} alt="線路画像"/>
-                    <Flex justifyContent={"flex-start"} w={"100vw"} overflowX={"scroll"}>
-                      <Flex bgImage={"url(/images/trainBox2.svg)"} bgSize={"cover"} gap={"8px"} padding={"8px 10px 16px"} >
-                        <Box bgColor={"#FF9900"} padding={"6px 24px"} flexShrink={"0"} borderRadius={"5px 2px 2px 2px"}><p className={css({fontSize:"18px",fontWeight:"bold",color:"base"})}>1<span className={css({fontSize:"10px",margin:"0 0 0 2px"})}>車両</span></p></Box>
-                        <Box bgColor={"#FFF0D9"} padding={"6px 24px"} flexShrink={"0"} borderRadius={"2px 2px 2px 2px"}><p className={css({fontSize:"18px",fontWeight:"bold",color:"base"})}>2<span className={css({fontSize:"10px",margin:"0 0 0 2px"})}>車両</span></p></Box>
-                        <Box bgColor={"#FEE2B8"} padding={"6px 24px"} flexShrink={"0"} borderRadius={"2px 2px 2px 2px"}><p className={css({fontSize:"18px",fontWeight:"bold",color:"base"})}>3<span className={css({fontSize:"10px",margin:"0 0 0 2px"})}>車両</span></p></Box>
-                        <Box bgColor={"#FFB526"} padding={"6px 24px"} flexShrink={"0"} borderRadius={"2px 2px 2px 2px"}><p className={css({fontSize:"18px",fontWeight:"bold",color:"base"})}>4<span className={css({fontSize:"10px",margin:"0 0 0 2px"})}>車両</span></p></Box>
+                    <Flex justifyContent={"flex-start"} w={"100vw"} overflowX={"scroll"} paddingTop={"16px"}>
+                      <Flex bgImage={"url(/images/trainBox2.svg)"} className={css({transform:"rotateY(180deg)"})} bgSize={"cover"} gap={"8px"} padding={"8px 10px 16px"} >
+                        <Box bgColor={"#FF9900"} padding={"6px 24px"} transform={"rotateY(180deg)"} flexShrink={"0"} borderRadius={"5px 2px 2px 2px"}><p className={css({fontSize:"18px",fontWeight:"bold",color:"base"})}>8<span className={css({fontSize:"10px",margin:"0 0 0 2px"})}>車両</span></p></Box>
+                        <Box bgColor={"#FFF0D9"} padding={"6px 24px"} transform={"rotateY(180deg)"} flexShrink={"0"} borderRadius={"2px 2px 2px 2px"}><p className={css({fontSize:"18px",fontWeight:"bold",color:"base"})}>7<span className={css({fontSize:"10px",margin:"0 0 0 2px"})}>車両</span></p></Box>
+                        <Box bgColor={"#FEE2B8"} padding={"6px 24px"} transform={"rotateY(180deg)"} flexShrink={"0"} borderRadius={"2px 2px 2px 2px"}><p className={css({fontSize:"18px",fontWeight:"bold",color:"base"})}>6<span className={css({fontSize:"10px",margin:"0 0 0 2px"})}>車両</span></p></Box>
+                        <Box bgColor={"#FFB526"} padding={"6px 24px"} transform={"rotateY(180deg)"} flexShrink={"0"} borderRadius={"2px 2px 2px 2px"}><p className={css({fontSize:"18px",fontWeight:"bold",color:"base"})}>5<span className={css({fontSize:"10px",margin:"0 0 0 2px"})}>車両</span></p></Box>
                       </Flex>
                     </Flex>
                     <Image src="./images/load.svg" width={"1000"} height={"1000"} alt="線路画像"/>
