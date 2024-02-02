@@ -111,7 +111,7 @@ export default function Home() {
                       <div className={css({bgImage:"url(/images/myRoot2.svg)",w:"41px",h:"37px"})}></div>
                       <div className={css({bgImage:"url(/images/myRoot3.svg)",w:"41px",h:"37px"})}></div>
                       <div className={css({bgImage:"url(/images/myRoot4.svg)",w:"41px",h:"37px"})}></div>
-                      <div className={css({bgImage:"url(/images/myRoot5.svg)",w:"41px",h:"37px"})}></div>
+                      <div className={css({bgImage:"url(/images/myroot5.svg)",w:"41px",h:"37px"})}></div>
                     </div>
                   <span className={css({fontSize:"12px",fontWeight:"bold"})}>弱</span>
                 </Center>
